@@ -1,0 +1,23 @@
+{
+  "name": "dead-pixel-editor",
+  "version": "1.0.0",
+  "private": true,
+  "authors": [
+    {
+      "name": "Simon Raichl",
+      "homepage": "https://github.com/velociraptorcze"
+    }
+  ],
+  "license": "MIT",
+  "description": "Pixel Editor",
+  "scripts": {
+    "build:js": "parcel build src/js/app.js --no-source-maps -d dist/",
+    "dev:js": "parcel watch src/js/app.js --no-source-maps -d dist/ --no-hmr"
+  },
+  "devDependencies": {
+    "parcel": "1.12.4"
+  },
+  "dependencies": {
+    "grumpydi": "1.0.0"
+  }
+}

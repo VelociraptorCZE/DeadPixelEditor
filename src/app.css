@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+.layers {
+    position: relative;
+}
+
+canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: crosshair;
+}
+
+#previewLayer {
+    opacity: .5;
+}
+
+#mainLayer {
+    background-image: url(../assets/grid.svg);
+}
