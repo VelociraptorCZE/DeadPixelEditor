@@ -12,7 +12,7 @@ export default class {
 	}
 
 	createCanvas () {
-		const { canvas } = this.canvasManager.mainContext;
+		const { canvas } = this.canvasManager.previewContext;
 
 		canvas.addEventListener("mousedown", () => this.isDrawing = true);
 		canvas.addEventListener("mouseup", () => this.isDrawing = false);

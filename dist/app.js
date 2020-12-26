@@ -253,9 +253,8 @@ var _default = /*#__PURE__*/function () {
     value: function createCanvas() {
       var brush = this.brush,
           canvasManager = this.canvasManager;
-      var previewContext = canvasManager.previewContext,
-          mainContext = canvasManager.mainContext;
-      mainContext.canvas.addEventListener("mousemove", function (_ref2) {
+      var previewContext = canvasManager.previewContext;
+      previewContext.canvas.addEventListener("mousemove", function (_ref2) {
         var layerX = _ref2.layerX,
             layerY = _ref2.layerY;
         previewContext.clearRect(0, 0, previewContext.canvas.width, previewContext.canvas.height);
@@ -390,7 +389,7 @@ var _default = /*#__PURE__*/function () {
     value: function createCanvas() {
       var _this2 = this;
 
-      var canvas = this.canvasManager.mainContext.canvas;
+      var canvas = this.canvasManager.previewContext.canvas;
       canvas.addEventListener("mousedown", function () {
         return _this2.isDrawing = true;
       });

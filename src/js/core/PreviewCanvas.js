@@ -13,9 +13,9 @@ export default class {
 
 	createCanvas () {
 		const { brush, canvasManager } = this;
-		const { previewContext, mainContext } = canvasManager;
+		const { previewContext } = canvasManager;
 
-		mainContext.canvas.addEventListener("mousemove", ({ layerX, layerY }) => {
+		previewContext.canvas.addEventListener("mousemove", ({ layerX, layerY }) => {
 			previewContext.clearRect(0, 0, previewContext.canvas.width, previewContext.canvas.height);
 			previewContext.fillStyle = brush.color;
 			previewContext.fillRect(
