@@ -1,3 +1,9 @@
+/**
+ * DeadPixelEditor
+ * Copyright (c) Simon Raichl 2020
+ * MIT License
+ */
+
 export default class {
 	onInit ({ brush, canvasManager }) {
 		this.brush = brush;

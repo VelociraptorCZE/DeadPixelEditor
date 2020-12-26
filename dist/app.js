@@ -199,6 +199,11 @@ exports.default = void 0;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * DeadPixelEditor
+ * Copyright (c) Simon Raichl 2020
+ * MIT License
+ */
 var _default = function _default() {
   var color = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "#000";
   var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 32;
@@ -224,6 +229,11 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+/**
+ * DeadPixelEditor
+ * Copyright (c) Simon Raichl 2020
+ * MIT License
+ */
 var _default = /*#__PURE__*/function () {
   function _default() {
     _classCallCheck(this, _default);
@@ -273,6 +283,11 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+/**
+ * DeadPixelEditor
+ * Copyright (c) Simon Raichl 2020
+ * MIT License
+ */
 var _default = /*#__PURE__*/function () {
   function _default() {
     var _document$getElementB, _document$getElementB2;
@@ -314,6 +329,83 @@ var _default = /*#__PURE__*/function () {
 }();
 
 exports.default = _default;
+},{}],"core/MainCanvas.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classPrivateFieldGet(receiver, privateMap) { var descriptor = privateMap.get(receiver); if (!descriptor) { throw new TypeError("attempted to get private field on non-instance"); } if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
+
+var _drawCallback = new WeakMap();
+
+/**
+ * DeadPixelEditor
+ * Copyright (c) Simon Raichl 2020
+ * MIT License
+ */
+var _default = /*#__PURE__*/function () {
+  function _default() {
+    var _this = this;
+
+    _classCallCheck(this, _default);
+
+    _drawCallback.set(this, {
+      writable: true,
+      value: function value(_ref) {
+        var layerX = _ref.layerX,
+            layerY = _ref.layerY;
+
+        if (!_this.isDrawing) {
+          return;
+        }
+
+        var canvasManager = _this.canvasManager,
+            brush = _this.brush;
+        canvasManager.mainContext.fillStyle = brush.color;
+        canvasManager.mainContext.fillRect(canvasManager.getClosestCoordinate(layerX), canvasManager.getClosestCoordinate(layerY), brush.width, brush.width);
+      }
+    });
+  }
+
+  _createClass(_default, [{
+    key: "onInit",
+    value: function onInit(_ref2) {
+      var brush = _ref2.brush,
+          canvasManager = _ref2.canvasManager;
+      this.brush = brush;
+      this.canvasManager = canvasManager;
+      this.initCanvas();
+    }
+  }, {
+    key: "initCanvas",
+    value: function initCanvas() {
+      var _this2 = this;
+
+      var canvas = this.canvasManager.mainContext.canvas;
+      canvas.addEventListener("mousedown", function () {
+        return _this2.isDrawing = true;
+      });
+      canvas.addEventListener("mouseup", function () {
+        return _this2.isDrawing = false;
+      });
+      canvas.addEventListener("mousemove", _classPrivateFieldGet(this, _drawCallback));
+      canvas.addEventListener("mousedown", _classPrivateFieldGet(this, _drawCallback));
+    }
+  }]);
+
+  return _default;
+}();
+
+exports.default = _default;
 },{}],"app.js":[function(require,module,exports) {
 "use strict";
 
@@ -325,11 +417,19 @@ var _PreviewCanvas = _interopRequireDefault(require("./core/PreviewCanvas"));
 
 var _CanvasManager = _interopRequireDefault(require("./core/CanvasManager"));
 
+var _MainCanvas = _interopRequireDefault(require("./core/MainCanvas"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * DeadPixelEditor
+ * Copyright (c) Simon Raichl 2020
+ * MIT License
+ */
 (0, _grumpydi.default)({
   brush: _Brush.default,
   previewCanvas: _PreviewCanvas.default,
+  mainCanvas: _MainCanvas.default,
   canvasManager: _CanvasManager.default
 });
-},{"grumpydi":"../../node_modules/grumpydi/index.js","./core/Brush":"core/Brush.js","./core/PreviewCanvas":"core/PreviewCanvas.js","./core/CanvasManager":"core/CanvasManager.js"}]},{},["app.js"], null)
+},{"grumpydi":"../../node_modules/grumpydi/index.js","./core/Brush":"core/Brush.js","./core/PreviewCanvas":"core/PreviewCanvas.js","./core/CanvasManager":"core/CanvasManager.js","./core/MainCanvas":"core/MainCanvas.js"}]},{},["app.js"], null)

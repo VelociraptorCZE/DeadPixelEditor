@@ -10,7 +10,7 @@
    </cc:Work>
   </rdf:RDF>
  </metadata>
- <g transform="matrix(3.9999 0 0 3.9999 0 -1171.1)" fill-opacity=".27451">
-  <path d="m0 292.77v2.1167h2.1167v-2.1167zm2.1167 2.1167v2.1167h2.1167v-2.1167z" fill-opacity=".27451" style="paint-order:markers fill stroke"/>
+ <g transform="matrix(3.9999 0 0 3.9999 0 -1171.1)" fill-opacity=".1">
+  <path d="m0 292.77v2.1167h2.1167v-2.1167zm2.1167 2.1167v2.1167h2.1167v-2.1167z" fill-opacity=".1" style="paint-order:markers fill stroke"/>
  </g>
 </svg>
