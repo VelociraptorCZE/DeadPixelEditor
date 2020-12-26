@@ -5,9 +5,10 @@
  */
 
 export default class {
-	onInit ({ brush, canvasManager }) {
+	onInit ({ brush, canvasManager, menuManager }) {
 		this.brush = brush;
 		this.canvasManager = canvasManager;
+		this.menuManager = menuManager;
 		this.createCanvas();
 	}
 
@@ -34,5 +35,7 @@ export default class {
 			brush.width,
 			brush.width
 		);
+
+		this.menuManager.refreshImageExportButtonUrl();
 	};
 }

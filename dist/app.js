@@ -371,6 +371,8 @@ var _default = /*#__PURE__*/function () {
             brush = _this.brush;
         canvasManager.mainContext.fillStyle = brush.color;
         canvasManager.mainContext.fillRect(canvasManager.getClosestCoordinate(layerX), canvasManager.getClosestCoordinate(layerY), brush.width, brush.width);
+
+        _this.menuManager.refreshImageExportButtonUrl();
       }
     });
   }
@@ -379,9 +381,11 @@ var _default = /*#__PURE__*/function () {
     key: "onInit",
     value: function onInit(_ref2) {
       var brush = _ref2.brush,
-          canvasManager = _ref2.canvasManager;
+          canvasManager = _ref2.canvasManager,
+          menuManager = _ref2.menuManager;
       this.brush = brush;
       this.canvasManager = canvasManager;
+      this.menuManager = menuManager;
       this.createCanvas();
     }
   }, {
@@ -432,9 +436,13 @@ var _default = /*#__PURE__*/function () {
   _createClass(_default, [{
     key: "onInit",
     value: function onInit(_ref) {
-      var brush = _ref.brush;
+      var brush = _ref.brush,
+          canvasManager = _ref.canvasManager;
       this.brush = brush;
+      this.canvasManager = canvasManager;
+      this.exportImageButton = document.getElementById("exportImage");
       this.createMenu();
+      this.refreshImageExportButtonUrl();
     }
   }, {
     key: "createMenu",
@@ -446,6 +454,18 @@ var _default = /*#__PURE__*/function () {
         var target = _ref2.target;
         return _this.brush.color = target.value;
       });
+    }
+  }, {
+    key: "refreshImageExportButtonUrl",
+    value: function refreshImageExportButtonUrl() {
+      var canvasManager = this.canvasManager,
+          exportImageButton = this.exportImageButton,
+          brush = this.brush;
+      var canvas = document.createElement("canvas");
+      canvas.width = canvasManager.mainContext.canvas.width / brush.width;
+      canvas.height = canvasManager.mainContext.canvas.height / brush.width;
+      canvas.getContext("2d").drawImage(canvasManager.mainContext.canvas, 0, 0, canvas.width, canvas.height);
+      exportImageButton.href = canvas.toDataURL();
     }
   }]);
 
