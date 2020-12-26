@@ -246,11 +246,11 @@ var _default = /*#__PURE__*/function () {
           canvasManager = _ref.canvasManager;
       this.brush = brush;
       this.canvasManager = canvasManager;
-      this.initCanvas();
+      this.createCanvas();
     }
   }, {
-    key: "initCanvas",
-    value: function initCanvas() {
+    key: "createCanvas",
+    value: function createCanvas() {
       var brush = this.brush,
           canvasManager = this.canvasManager;
       var previewContext = canvasManager.previewContext,
@@ -383,11 +383,11 @@ var _default = /*#__PURE__*/function () {
           canvasManager = _ref2.canvasManager;
       this.brush = brush;
       this.canvasManager = canvasManager;
-      this.initCanvas();
+      this.createCanvas();
     }
   }, {
-    key: "initCanvas",
-    value: function initCanvas() {
+    key: "createCanvas",
+    value: function createCanvas() {
       var _this2 = this;
 
       var canvas = this.canvasManager.mainContext.canvas;
@@ -399,6 +399,54 @@ var _default = /*#__PURE__*/function () {
       });
       canvas.addEventListener("mousemove", _classPrivateFieldGet(this, _drawCallback));
       canvas.addEventListener("mousedown", _classPrivateFieldGet(this, _drawCallback));
+    }
+  }]);
+
+  return _default;
+}();
+
+exports.default = _default;
+},{}],"core/MenuManager.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/**
+ * DeadPixelEditor
+ * Copyright (c) Simon Raichl 2020
+ * MIT License
+ */
+var _default = /*#__PURE__*/function () {
+  function _default() {
+    _classCallCheck(this, _default);
+  }
+
+  _createClass(_default, [{
+    key: "onInit",
+    value: function onInit(_ref) {
+      var brush = _ref.brush;
+      this.brush = brush;
+      this.createMenu();
+    }
+  }, {
+    key: "createMenu",
+    value: function createMenu() {
+      var _document$getElementB,
+          _this = this;
+
+      (_document$getElementB = document.getElementById("brushColor")) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.addEventListener("input", function (_ref2) {
+        var target = _ref2.target;
+        return _this.brush.color = target.value;
+      });
     }
   }]);
 
@@ -419,6 +467,8 @@ var _CanvasManager = _interopRequireDefault(require("./core/CanvasManager"));
 
 var _MainCanvas = _interopRequireDefault(require("./core/MainCanvas"));
 
+var _MenuManager = _interopRequireDefault(require("./core/MenuManager"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -430,6 +480,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   brush: _Brush.default,
   previewCanvas: _PreviewCanvas.default,
   mainCanvas: _MainCanvas.default,
-  canvasManager: _CanvasManager.default
+  canvasManager: _CanvasManager.default,
+  menuManager: _MenuManager.default
 });
-},{"grumpydi":"../../node_modules/grumpydi/index.js","./core/Brush":"core/Brush.js","./core/PreviewCanvas":"core/PreviewCanvas.js","./core/CanvasManager":"core/CanvasManager.js","./core/MainCanvas":"core/MainCanvas.js"}]},{},["app.js"], null)
+},{"grumpydi":"../../node_modules/grumpydi/index.js","./core/Brush":"core/Brush.js","./core/PreviewCanvas":"core/PreviewCanvas.js","./core/CanvasManager":"core/CanvasManager.js","./core/MainCanvas":"core/MainCanvas.js","./core/MenuManager":"core/MenuManager.js"}]},{},["app.js"], null)

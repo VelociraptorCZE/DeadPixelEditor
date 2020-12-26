@@ -9,10 +9,12 @@ import Brush from "./core/Brush";
 import PreviewCanvas from "./core/PreviewCanvas";
 import CanvasManager from "./core/CanvasManager";
 import MainCanvas from "./core/MainCanvas";
+import MenuManager from "./core/MenuManager";
 
 GrumpyDI({
 	brush: Brush,
 	previewCanvas: PreviewCanvas,
 	mainCanvas: MainCanvas,
-	canvasManager: CanvasManager
+	canvasManager: CanvasManager,
+	menuManager: MenuManager
 });

@@ -8,10 +8,10 @@ export default class {
 	onInit ({ brush, canvasManager }) {
 		this.brush = brush;
 		this.canvasManager = canvasManager;
-		this.initCanvas();
+		this.createCanvas();
 	}
 
-	initCanvas () {
+	createCanvas () {
 		const { brush, canvasManager } = this;
 		const { previewContext, mainContext } = canvasManager;
 
