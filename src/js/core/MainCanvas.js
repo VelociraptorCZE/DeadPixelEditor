@@ -39,6 +39,7 @@ export default class {
 
 		const { canvasManager, brush } = this;
 
+		canvasManager.mainContext.globalCompositeOperation = canvasManager.drawMode;
 		canvasManager.mainContext.fillStyle = brush.color;
 		canvasManager.mainContext.fillRect(
 			canvasManager.getClosestCoordinate(layerX),

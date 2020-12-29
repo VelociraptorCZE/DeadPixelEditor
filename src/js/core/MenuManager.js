@@ -20,6 +20,6 @@ export default class {
 	}
 
 	refreshImageExportButtonUrl () {
-		exportImageButton.href = this.mainCanvas.getImageUrl();
+		this.exportImageButton.href = this.mainCanvas.getImageUrl();
 	}
 }

@@ -15,6 +15,14 @@
             Brush color
             <input type="color" id="brushColor">
         </label>
+        <label class="menu__item" for="drawMode">
+            <input type="radio" name="drawMode" id="drawMode" data-mode="source-over" checked>
+            Draw mode
+        </label>
+        <label class="menu__item" for="eraserMode">
+            <input type="radio" name="drawMode" id="eraserMode" data-mode="destination-out">
+            Eraser mode
+        </label>
     </section>
     <section class="layers">
         <canvas id="mainLayer" width="512" height="512"></canvas>

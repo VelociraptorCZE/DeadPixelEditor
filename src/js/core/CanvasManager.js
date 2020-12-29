@@ -5,9 +5,14 @@
  */
 
 export default class {
+	drawMode = "source-over";
+	previewContext = document.getElementById("previewLayer")?.getContext("2d");
+	mainContext = document.getElementById("mainLayer")?.getContext("2d");
+
 	constructor () {
-		this.previewContext = document.getElementById("previewLayer")?.getContext("2d");
-		this.mainContext = document.getElementById("mainLayer")?.getContext("2d");
+		[...document.querySelectorAll("input[name=drawMode]")].forEach(input => {
+			input.addEventListener("input", () => this.drawMode = input.dataset.mode);
+		});
 	}
 
 	onInit ({ brush }) {
