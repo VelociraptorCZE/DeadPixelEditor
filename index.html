@@ -11,19 +11,20 @@
         <a class="menu__item" id="exportImage" download="DeadPixelImage.png">
             Export as PNG
         </a>
-        <label for="brushColor" class="menu__item">
-            Brush color
-            <input type="color" id="brushColor">
-        </label>
-        <label class="menu__item" for="drawMode">
-            <input type="radio" name="drawMode" id="drawMode" data-mode="source-over" checked>
-            Draw mode
-        </label>
-        <label class="menu__item" for="eraserMode">
-            <input type="radio" name="drawMode" id="eraserMode" data-mode="destination-out">
-            Eraser mode
-        </label>
     </section>
+    <aside class="menu menu__side">
+        <input type="color" id="brushColor" class="brush-color">
+
+        <input type="radio" name="drawMode" class="draw-mode-radio" id="drawMode" data-mode="source-over" checked>
+        <label class="menu__item" for="drawMode">
+            <img src="assets/brush.png" alt="Brush">
+        </label>
+
+        <input type="radio" name="drawMode" class="draw-mode-radio" id="eraserMode" data-mode="destination-out">
+        <label class="menu__item" for="eraserMode">
+            <img src="assets/eraser.png" alt="Eraser">
+        </label>
+    </aside>
     <section class="layers">
         <canvas id="mainLayer" width="512" height="512"></canvas>
         <canvas id="previewLayer" width="512" height="512"></canvas>
