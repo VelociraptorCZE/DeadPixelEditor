@@ -21,6 +21,17 @@ export default class {
 		canvas.addEventListener("mousedown", this.#drawCallback);
 	}
 
+	getImageUrl (width = 16, height = 16) {
+		const canvas = document.createElement("canvas");
+		canvas.width = width;
+		canvas.height = height;
+		canvas
+			.getContext("2d")
+			.drawImage(this.canvasManager.mainContext.canvas, 0, 0, width, height);
+
+		return canvas.toDataURL();
+	}
+
 	#drawCallback = ({ layerX, layerY }) => {
 		if (!this.isDrawing) {
 			return;

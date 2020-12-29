@@ -5,9 +5,9 @@
  */
 
 export default class {
-	onInit ({ brush, canvasManager }) {
+	onInit ({ brush, mainCanvas }) {
 		this.brush = brush;
-		this.canvasManager = canvasManager;
+		this.mainCanvas = mainCanvas;
 		this.exportImageButton = document.getElementById("exportImage");
 		this.createMenu();
 		this.refreshImageExportButtonUrl();
@@ -20,13 +20,6 @@ export default class {
 	}
 
 	refreshImageExportButtonUrl () {
-		const { canvasManager, exportImageButton, brush } = this;
-
-		const canvas = document.createElement("canvas");
-		canvas.width = canvasManager.mainContext.canvas.width / brush.width;
-		canvas.height = canvasManager.mainContext.canvas.height / brush.width;
-		canvas.getContext("2d").drawImage(canvasManager.mainContext.canvas, 0, 0, canvas.width, canvas.height);
-
-		exportImageButton.href = canvas.toDataURL();
+		exportImageButton.href = this.mainCanvas.getImageUrl();
 	}
 }
