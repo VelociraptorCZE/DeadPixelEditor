@@ -65,11 +65,11 @@ canvas {
     cursor: pointer;
 }
 
-.menu__item:hover, .draw-mode-radio:checked + .menu__item {
+.menu__item:hover, .drawMode:checked + .menu__item {
     background: #484848;
     color: #fff;
 }
 
-.draw-mode-radio {
+.d-none {
     display: none;
 }

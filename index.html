@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="src/app.css">
     <script src="dist/app.js" async defer></script>
-    <title>DeadPixelEditor</title>
+    <title>Dead Pixel Editor</title>
 </head>
 <body>
     <section class="menu">
@@ -13,14 +13,14 @@
         </a>
     </section>
     <aside class="menu menu__side">
-        <input type="color" id="brushColor" class="brush-color">
+        <input type="color" id="brushColorPicker" class="brush-color">
 
-        <input type="radio" name="drawMode" class="draw-mode-radio" id="drawMode" data-mode="source-over" checked>
+        <input type="radio" name="drawMode" class="drawMode d-none" id="drawMode" data-mode="source-over" checked>
         <label class="menu__item" for="drawMode">
             <img src="assets/brush.png" alt="Brush">
         </label>
 
-        <input type="radio" name="drawMode" class="draw-mode-radio" id="eraserMode" data-mode="destination-out">
+        <input type="radio" name="drawMode" class="drawMode d-none" id="eraserMode" data-mode="destination-out">
         <label class="menu__item" for="eraserMode">
             <img src="assets/eraser.png" alt="Eraser">
         </label>

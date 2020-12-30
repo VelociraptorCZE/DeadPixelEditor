@@ -9,14 +9,22 @@ export default class {
 		this.brush = brush;
 		this.mainCanvas = mainCanvas;
 		this.exportImageButton = document.getElementById("exportImage");
+		this.brushColorPicker = document.getElementById("brushColorPicker");
 		this.createMenu();
 		this.refreshImageExportButtonUrl();
 	}
 
 	createMenu () {
-		document.getElementById("brushColor")?.addEventListener(
-			"input", ({ target }) => this.brush.color = target.value
-		);
+		this.brushColorPicker?.addEventListener("input", ({ target }) => {
+			this.brush.color = target.value;
+			const brushModeButton = this.getBrushModeButton();
+			brushModeButton.checked = true;
+			brushModeButton.dispatchEvent(new Event("input"));
+		});
+	}
+
+	getBrushModeButton () {
+		return document.querySelector(".drawMode[data-mode=source-over]");
 	}
 
 	refreshImageExportButtonUrl () {

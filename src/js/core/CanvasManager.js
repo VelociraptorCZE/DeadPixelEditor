@@ -10,7 +10,7 @@ export default class {
 	mainContext = document.getElementById("mainLayer")?.getContext("2d");
 
 	constructor () {
-		[...document.querySelectorAll("input[name=drawMode]")].forEach(input => {
+		[...document.getElementsByClassName("drawMode")].forEach(input => {
 			input.addEventListener("input", () => this.drawMode = input.dataset.mode);
 		});
 	}
