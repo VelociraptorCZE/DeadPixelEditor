@@ -32,6 +32,12 @@ export default class {
 		return canvas.toDataURL();
 	}
 
+	clearCanvas = () => {
+		const { mainContext } = this.canvasManager;
+
+		mainContext.clearRect(0, 0, mainContext.canvas.width, mainContext.canvas.height);
+	}
+
 	#drawCallback = ({ layerX, layerY }) => {
 		if (!this.isDrawing) {
 			return;

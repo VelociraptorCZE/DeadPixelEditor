@@ -10,6 +10,7 @@ export default class {
 		this.mainCanvas = mainCanvas;
 		this.exportImageButton = document.getElementById("exportImage");
 		this.brushColorPicker = document.getElementById("brushColorPicker");
+		this.newImageButton = document.getElementById("newImage");
 		this.createMenu();
 		this.refreshImageExportButtonUrl();
 	}
@@ -21,6 +22,8 @@ export default class {
 			brushModeButton.checked = true;
 			brushModeButton.dispatchEvent(new Event("input"));
 		});
+
+		this.newImageButton.addEventListener("click", this.mainCanvas.clearCanvas);
 	}
 
 	getBrushModeButton () {
