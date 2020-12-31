@@ -5,12 +5,13 @@
  */
 
 export default class {
+	exportImageButton = document.getElementById("exportImage");
+	brushColorPicker = document.getElementById("brushColorPicker");
+	newImageButton = document.getElementById("newImage");
+
 	onInit ({ brush, mainCanvas }) {
 		this.brush = brush;
 		this.mainCanvas = mainCanvas;
-		this.exportImageButton = document.getElementById("exportImage");
-		this.brushColorPicker = document.getElementById("brushColorPicker");
-		this.newImageButton = document.getElementById("newImage");
 		this.createMenu();
 		this.refreshImageExportButtonUrl();
 	}
