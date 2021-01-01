@@ -1,14 +1,15 @@
 /**
  * DeadPixelEditor
- * Copyright (c) Simon Raichl 2020
+ * Copyright (c) Simon Raichl 2020 - 2021
  * MIT License
  */
 
 export default class {
-	onInit ({ brush, canvasManager, menuManager }) {
+	onInit ({ brush, canvasManager, menuManager, colorPaletteMenuManager }) {
 		this.brush = brush;
 		this.canvasManager = canvasManager;
 		this.menuManager = menuManager;
+		this.colorPaletteMenuManager = colorPaletteMenuManager;
 		this.createCanvas();
 	}
 
@@ -16,7 +17,13 @@ export default class {
 		const { canvas } = this.canvasManager.previewContext;
 
 		canvas.addEventListener("mousedown", () => this.isDrawing = true);
-		canvas.addEventListener("mouseup", () => this.isDrawing = false);
+		canvas.addEventListener("mouseup", () => {
+			const { colorPaletteMenuManager, brush } = this;
+
+			this.isDrawing = false;
+			colorPaletteMenuManager.usedColors.add(brush.color);
+			colorPaletteMenuManager.renderMenu();
+		});
 		canvas.addEventListener("mousemove", this.#drawCallback);
 		canvas.addEventListener("mousedown", this.#drawCallback);
 	}

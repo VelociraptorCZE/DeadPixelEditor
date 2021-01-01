@@ -48,6 +48,23 @@ canvas {
     width: 100vw;
 }
 
+.menu__color-palette {
+    position: absolute;
+    bottom: 0;
+    padding: .25rem;
+    display: flex;
+    overflow: auto;
+}
+
+.menu__color-box {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    margin: 2px;
+    cursor: pointer;
+    border: 1px solid #cfcfcf;
+}
+
 .menu__side {
     width: auto;
     flex-direction: column;
