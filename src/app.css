@@ -48,6 +48,10 @@ canvas {
     width: 100vw;
 }
 
+.menu * {
+    user-select: none;
+}
+
 .menu__color-palette {
     position: absolute;
     bottom: 0;
@@ -66,6 +70,7 @@ canvas {
 }
 
 .menu__side {
+    padding-top: 1rem;
     width: auto;
     flex-direction: column;
     position: absolute;

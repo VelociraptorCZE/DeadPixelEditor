@@ -5,6 +5,9 @@
  */
 
 export default class {
+	savedImages = [];
+	step = 0;
+
 	onInit ({ brush, canvasManager, menuManager, colorPaletteMenuManager }) {
 		this.brush = brush;
 		this.canvasManager = canvasManager;
@@ -21,11 +24,30 @@ export default class {
 			const { colorPaletteMenuManager, brush } = this;
 
 			this.isDrawing = false;
+			this.saveImageSnapshot();
+
 			colorPaletteMenuManager.usedColors.add(brush.color);
 			colorPaletteMenuManager.renderMenu();
 		});
 		canvas.addEventListener("mousemove", this.#drawCallback);
 		canvas.addEventListener("mousedown", this.#drawCallback);
+	}
+
+	saveImageSnapshot () {
+		const { savedImages } = this;
+		const image = this.getCurrentImage();
+
+		if (savedImages[savedImages.length - 1]?.src === image.src) {
+			return;
+		}
+
+		savedImages.push(image);
+
+		if (savedImages.length === 100) {
+			savedImages.shift();
+		}
+
+		this.step = savedImages.length - 1;
 	}
 
 	getImageUrl (width = 16, height = 16) {
@@ -39,10 +61,38 @@ export default class {
 		return canvas.toDataURL();
 	}
 
-	clearCanvas = () => {
+	clearCanvas () {
 		const { mainContext } = this.canvasManager;
 
 		mainContext.clearRect(0, 0, mainContext.canvas.width, mainContext.canvas.height);
+	}
+
+	getCurrentImage () {
+		const { width, height } = this.canvasManager.mainContext.canvas;
+		const image = new Image;
+		image.src = this.getImageUrl(width, height);
+
+		return image;
+	}
+
+	undo = () => {
+		const { canvasManager: { mainContext } } = this;
+
+		--this.step;
+		const image = this.savedImages[this.step];
+
+		if (image) {
+			this.clearCanvas();
+			mainContext.drawImage(image, 0, 0);
+		}
+
+		this.menuManager.refreshImageExportButtonUrl();
+	}
+
+	newImage = () => {
+		this.step = 0;
+		this.savedImages = [];
+		this.clearCanvas();
 	}
 
 	#drawCallback = ({ layerX, layerY }) => {

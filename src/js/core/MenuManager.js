@@ -1,6 +1,6 @@
 /**
  * DeadPixelEditor
- * Copyright (c) Simon Raichl 2020
+ * Copyright (c) Simon Raichl 2020 - 2021
  * MIT License
  */
 
@@ -8,6 +8,7 @@ export default class {
 	exportImageButton = document.getElementById("exportImage");
 	brushColorPicker = document.getElementById("brushColorPicker");
 	newImageButton = document.getElementById("newImage");
+	undoButton = document.getElementById("undoStep");
 
 	onInit ({ brush, mainCanvas }) {
 		this.brush = brush;
@@ -17,6 +18,8 @@ export default class {
 	}
 
 	createMenu () {
+		const { mainCanvas } = this;
+
 		this.brushColorPicker?.addEventListener("input", ({ target }) => {
 			this.brush.color = target.value;
 			const brushModeButton = this.getBrushModeButton();
@@ -24,7 +27,8 @@ export default class {
 			brushModeButton.dispatchEvent(new Event("input"));
 		});
 
-		this.newImageButton.addEventListener("click", this.mainCanvas.clearCanvas);
+		this.undoButton.addEventListener("click", mainCanvas.undo);
+		this.newImageButton.addEventListener("click", mainCanvas.newImage);
 	}
 
 	getBrushModeButton () {
