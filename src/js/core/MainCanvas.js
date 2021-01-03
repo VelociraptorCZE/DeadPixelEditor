@@ -90,6 +90,10 @@ export default class {
 	}
 
 	newImage = () => {
+		if (!confirm("Do you want to start over?")) {
+			return;
+		}
+
 		this.step = 0;
 		this.savedImages = [];
 		this.clearCanvas();
